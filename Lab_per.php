@@ -4,7 +4,7 @@
 	
 </head>
 <body><center>
-	<form method="POST" action="valid.php">
+	<form method="POST" action="Lab_per.php">
 	<table border="1">
 		<tr>
 			<td colspan="3">
@@ -77,3 +77,33 @@
 	</form>
 </center></body>
 </html>
+
+
+  
+<?php
+	
+	if( isset($_POST['submit'])){
+		
+		
+		if(empty(trim($name)) || empty(trim($email)) || empty(trim($gender)) || empty(trim($date))){
+			echo "Null submission found!";
+		}else{
+
+			$file = fopen('store.txt', 'a') or die("Unable to open file!");
+			
+			$name = $_POST['name'];
+			fwrite($file, $name);
+			
+			$email =  $_POST['email'];
+			fwrite($file, $email);
+			
+			$gender =  $_POST['gender'];
+			fwrite($file, $gender);
+			
+			$date = $_POST['date'];
+			fwrite($file, $date);
+
+		}
+
+	}
+?>
